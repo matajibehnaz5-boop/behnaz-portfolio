@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بهناز متاجی — Behnaz Motaji</title>
+<meta name="description" content="بهناز متاجی، دانشجوی کارشناسی مهندسی کامپیوتر — پروژه‌ها و مسیر یادگیری">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-lang="fa">
+
+<header>
+  <div class="wrap header-row">
+    <div class="mark mono">ب.م</div>
+    <button class="lang-toggle mono" id="langToggle" aria-label="Switch language">
+      <span data-fa>EN</span>
+      <span data-en>فا</span>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none; padding-top:6px;">
+    <div class="profile-frame">
+      <img src="assets/profile.png" alt="Behnaz Motaji">
+    </div>
+
+    <p class="eyebrow mono" data-fa>دانشجوی کارشناسی مهندسی کامپیوتر</p>
+    <p class="eyebrow mono" data-en>Computer Science Undergraduate</p>
+
+    <h1 class="name display">
+      <span data-fa>بهناز متاجی</span>
+      <span data-en>Behnaz Motaji</span>
+    </h1>
+
+    <div class="stripe" aria-hidden="true"></div>
+
+    <p class="tagline" data-fa>
+      علاقه‌مند به ساختن محصولات دیجیتال از صفر تا اجرا — از طراحی رابط کاربری تا راه‌اندازی سرور.
+      این‌جا پروژه‌هایی رو می‌بینید که در کنار درس ساختمشون.
+    </p>
+    <p class="tagline" data-en>
+      I like building digital products end to end — from interface to server.
+      Below are a couple of projects I've built alongside my coursework.
+    </p>
+  </section>
+
+  <section id="about">
+    <p class="section-label mono" data-fa>درباره</p>
+    <p class="section-label mono" data-en>About</p>
+    <h2 class="display" data-fa>یادگیری با ساختن</h2>
+    <h2 class="display" data-en>Learning by building</h2>
+    <div class="about-body">
+      <p data-fa>
+        من بهناز هستم، دانشجوی کارشناسی مهندسی کامپیوتر. بیشتر یادگیری‌هام از دل پروژه‌های واقعی اتفاق افتاده،
+        نه فقط تمرین‌های درسی. دو تا از پروژه‌هایی که این روزها روشون کار می‌کنم رو پایین می‌بینید؛
+        بقیه‌ی صفحات این سایت (جزوات، درباره‌ی من کامل‌تر و منابع) به‌زودی اضافه می‌شه.
+      </p>
+      <p data-en>
+        I'm Behnaz, a Computer Science undergraduate. Most of what I've learned so far came from
+        building real projects rather than just coursework exercises. Below are two I've been
+        working on lately — more pages (notes, a fuller bio, resources) are on their way.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-label mono" data-fa>پروژه‌ها</p>
+    <p class="section-label mono" data-en>Projects</p>
+    <h2 class="display" data-fa>چیزهایی که ساختم</h2>
+    <h2 class="display" data-en>Things I've built</h2>
+
+    <!-- Project 1 — Viyan Boutique -->
+    <article class="project viyan">
+      <div class="win-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="path mono">~/projects/viyan-boutique</span>
+      </div>
+      <img class="shot" src="assets/viyan-boutique.jpg" alt="Viyan Boutique repository">
+      <div class="project-body">
+        <h3 data-fa>بوتیک ویان</h3>
+        <h3 data-en>Viyan Boutique</h3>
+        <p data-fa>
+          یه فروشگاه آنلاین لباس، با فرانت‌اند React و بک‌اند Django. شامل یه صفحه‌ی
+          نمایش کمپین برای معرفی مجموعه‌های ویژه.
+        </p>
+        <p data-en>
+          An online clothing storefront with a React frontend and a Django backend,
+          including a dedicated campaign showcase page for featured collections.
+        </p>
+        <div class="chips mono">
+          <span class="chip">React</span>
+          <span class="chip">Django</span>
+          <span class="chip">Vite</span>
+        </div>
+        <a class="project-link" href="#" data-fa>مشاهده‌ی مخزن ↗</a>
+        <a class="project-link" href="#" data-en>View repository ↗</a>
+      </div>
+    </article>
+
+    <!-- Project 2 — Samane Daneshjooei / Vazir dashboard -->
+    <article class="project samane">
+      <div class="win-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="path mono">~/projects/samane-daneshjooei</span>
+      </div>
+      <img class="shot" src="assets/samane-dashboard.jpg" alt="Student dashboard repository">
+      <div class="project-body">
+        <h3 data-fa>سامانه دانشجویی</h3>
+        <h3 data-en>Student Portal</h3>
+        <p data-fa>
+          یه داشبورد دانشجویی با Firebase برای مدیریت اطلاعات و فعالیت‌های دانشجویان، در حال توسعه.
+        </p>
+        <p data-en>
+          A student dashboard built with Firebase for managing student data and activity — currently in progress.
+        </p>
+        <div class="chips mono">
+          <span class="chip">Firebase</span>
+          <span class="chip">JavaScript</span>
+        </div>
+        <a class="project-link" href="#" data-fa>مشاهده‌ی مخزن ↗</a>
+        <a class="project-link" href="#" data-en>View repository ↗</a>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <span data-fa>بهناز متاجی · ۱۴۰۴</span>
+    <span data-en>Behnaz Motaji · 2026</span>
+    <span class="more-soon" data-fa>بقیه صفحات به‌زودی...</span>
+    <span class="more-soon" data-en>More pages coming soon...</span>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

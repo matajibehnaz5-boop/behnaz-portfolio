@@ -1,0 +1,287 @@
+/* ============================================================
+   Behnaz Motaji — student portfolio
+   Design tokens
+   ============================================================ */
+:root {
+  --ink: #12161d;
+  --ink-2: #1a202b;
+  --ink-3: #222a37;
+  --parchment: #ece4d6;
+  --parchment-dim: #a29b8d;
+  --brass: #c9a15c;
+  --brick: #b5674a;
+  --teal: #4f8177;
+  --line: rgba(236, 228, 214, 0.14);
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Language-driven typography ---------------------------------- */
+body[data-lang="fa"] {
+  font-family: "Vazirmatn", sans-serif;
+}
+body[data-lang="fa"] .display {
+  font-family: "Vazirmatn", sans-serif;
+  font-weight: 700;
+}
+body[data-lang="en"] .display {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+body[data-lang="en"] {
+  font-family: "Inter", sans-serif;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.02em;
+}
+body[data-lang="fa"] .mono { letter-spacing: 0; }
+
+/* Show/hide per language --------------------------------------- */
+[data-fa], [data-en] { display: none; }
+body[data-lang="fa"] [data-fa] { display: initial; }
+body[data-lang="en"] [data-en] { display: initial; }
+body[data-lang="fa"] [data-fa].block { display: block; }
+body[data-lang="en"] [data-en].block { display: block; }
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header --------------------------------------------------------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: linear-gradient(var(--ink) 78%, transparent);
+  padding: 20px 0 14px;
+}
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mark {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--brass);
+}
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--parchment);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color .25s ease, color .25s ease;
+}
+.lang-toggle:hover { border-color: var(--brass); color: var(--brass); }
+.lang-toggle:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* Signature accent stripe ---------------------------------------
+   A diagonal rule that leans toward the reading direction —
+   it flips its lean when the language flips.                    */
+.stripe {
+  height: 46px;
+  margin: 6px 0 10px;
+  position: relative;
+  overflow: hidden;
+}
+.stripe::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  top: 50%;
+  width: 120%;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-50%) rotate(-3deg);
+  transition: transform .6s cubic-bezier(.65,0,.35,1);
+}
+.stripe::after {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 3px;
+  top: 50%;
+  background: var(--brass);
+  transform: translateY(-50%) rotate(-3deg);
+  transition: transform .6s cubic-bezier(.65,0,.35,1), left .6s ease, right .6s ease;
+}
+body[data-lang="fa"] .stripe::after { right: 24px; }
+body[data-lang="en"] .stripe::before { transform: translateY(-50%) rotate(3deg); }
+body[data-lang="en"] .stripe::after  { transform: translateY(-50%) rotate(3deg); left: 24px; }
+
+/* Hero ------------------------------------------------------------ */
+.hero {
+  padding: 36px 0 20px;
+}
+.eyebrow {
+  color: var(--brass);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+body[data-lang="fa"] .eyebrow { text-transform: none; }
+
+.name {
+  font-size: clamp(38px, 9vw, 60px);
+  line-height: 1.08;
+  margin: 0 0 4px;
+}
+.role {
+  color: var(--parchment-dim);
+  font-size: clamp(15px, 3.4vw, 18px);
+  margin: 0 0 22px;
+}
+.tagline {
+  max-width: 60ch;
+  color: var(--parchment);
+  font-size: 16.5px;
+}
+.profile-frame {
+  float: inline-end;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  margin-inline-start: 20px;
+  margin-bottom: 12px;
+  shape-outside: circle();
+}
+.profile-frame img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(.15) contrast(1.02);
+}
+
+/* Section scaffolding ---------------------------------------------- */
+section { padding: 46px 0; border-top: 1px solid var(--line); }
+.section-label {
+  color: var(--brass);
+  font-size: 12px;
+  margin: 0 0 18px;
+}
+h2.display {
+  font-size: clamp(24px, 5vw, 32px);
+  margin: 0 0 18px;
+}
+.about-body p { color: var(--parchment); max-width: 62ch; }
+
+/* Project cards — styled as small code / browser windows ---------- */
+.project {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink-2);
+  margin-bottom: 26px;
+}
+.project + .project { margin-top: 30px; }
+.win-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--ink-3);
+  border-bottom: 1px solid var(--line);
+}
+.win-bar .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.win-bar .path {
+  margin-inline-start: 10px;
+  font-size: 12px;
+  color: var(--parchment-dim);
+}
+.project .shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid var(--line);
+  filter: saturate(.92) contrast(1.03);
+}
+.project-body { padding: 20px 20px 22px; }
+.project h3 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+.project p { color: var(--parchment-dim); font-size: 14.5px; max-width: 58ch; margin: 0 0 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip {
+  font-size: 11.5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--parchment-dim);
+}
+.project.viyan .win-bar .path::before,
+.project.viyan { --accent: var(--brick); }
+.project.samane { --accent: var(--teal); }
+.project .win-bar .dot:first-child { background: var(--accent, var(--brass)); }
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--parchment);
+  text-decoration: none;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--accent, var(--brass));
+  padding-bottom: 2px;
+}
+.project-link:hover { color: var(--accent, var(--brass)); }
+
+/* Footer ------------------------------------------------------------- */
+footer {
+  padding: 30px 0 50px;
+  border-top: 1px solid var(--line);
+  color: var(--parchment-dim);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.more-soon {
+  color: var(--parchment-dim);
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media (max-width: 480px) {
+  .profile-frame { width: 96px; height: 96px; }
+}
