@@ -1,0 +1,384 @@
+/* ==========================================================================
+   بهناز متاجی — Portfolio stylesheet (glass edition)
+   Sky-blue + white canvas, frosted-glass cards, pill buttons
+   ========================================================================== */
+
+:root{
+  --white:      #ffffff;
+  --sky-50:     #f0f9ff;
+  --sky-100:    #e0f2fe;
+  --sky-200:    #bae6fd;
+  --sky-400:    #38bdf8;
+  --sky-500:    #0ea5e9;
+  --sky-600:    #0284c7;
+  --sky-900:    #0c3a5c;
+  --navy-950:   #0a2540;
+  --slate-500:  #55708c;
+
+  --glass-bg:      rgba(255,255,255,.55);
+  --glass-bg-soft: rgba(255,255,255,.4);
+  --glass-border:  rgba(255,255,255,.7);
+  --glass-blur: blur(18px) saturate(160%);
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+
+  --shadow-glass: 0 8px 32px -8px rgba(2,132,199,.18), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-glass-hover: 0 16px 44px -10px rgba(2,132,199,.28), inset 0 1px 0 rgba(255,255,255,.7);
+  --shadow-btn: 0 6px 18px -6px rgba(14,165,233,.55);
+
+  --ease: cubic-bezier(.22,.8,.28,1);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  color: var(--navy-950);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  background:
+    radial-gradient(680px 420px at 12% -8%, var(--sky-200), transparent 60%),
+    radial-gradient(760px 480px at 108% 12%, var(--sky-100), transparent 55%),
+    radial-gradient(900px 560px at 50% 115%, var(--sky-100), transparent 60%),
+    var(--white);
+  background-attachment: fixed;
+}
+
+/* Language direction ------------------------------------------------------ */
+body[data-lang="fa"]{ direction: rtl; }
+body[data-lang="en"]{ direction: ltr; }
+
+body[data-lang="en"] [data-fa]{ display: none !important; }
+body[data-lang="fa"] [data-en]{ display: none !important; }
+
+[data-fa]{ font-family: "Vazirmatn", "Tahoma", sans-serif; }
+[data-en]{ font-family: "Inter", "Segoe UI", sans-serif; }
+
+.mono{
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: .04em;
+}
+body[data-lang="fa"] .mono{ direction: ltr; unicode-bidi: isolate; }
+
+a{ color: inherit; text-decoration: none; }
+img{ max-width: 100%; display: block; }
+
+::selection{ background: var(--sky-500); color: var(--white); }
+
+:focus-visible{
+  outline: 2.5px solid var(--sky-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.wrap{
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Header — glass bar --------------------------------------------------------- */
+header{
+  position: sticky;
+  top: 14px;
+  z-index: 20;
+  margin: 0 auto;
+  max-width: 792px;
+  padding-inline: 16px;
+}
+
+.header-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-glass);
+}
+
+.mark{
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(155deg, var(--sky-400), var(--sky-600));
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow-btn);
+}
+
+.lang-toggle{
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,.65);
+  color: var(--sky-600);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: box-shadow .2s var(--ease), transform .15s var(--ease), background .2s var(--ease);
+}
+.lang-toggle:hover{ background: var(--white); box-shadow: var(--shadow-btn); }
+.lang-toggle:active{ transform: scale(.95); }
+
+/* Hero ----------------------------------------------------------------------- */
+.hero{
+  padding-block: 64px 44px;
+  text-align: center;
+  position: relative;
+}
+
+.profile-frame{
+  width: 116px;
+  height: 116px;
+  margin-inline: auto;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(155deg, var(--sky-400), var(--sky-100));
+  box-shadow: var(--shadow-btn);
+  animation: frame-in .7s var(--ease) both;
+}
+.profile-frame img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+}
+
+.eyebrow{
+  color: var(--sky-600);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+.name{ margin: 0 0 18px; }
+.name span{ display: block; }
+.name span[data-fa]{
+  font-size: clamp(32px, 6vw, 46px);
+  font-weight: 700;
+  color: var(--navy-950);
+}
+.name span[data-en]{
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(30px, 5.6vw, 44px);
+  color: var(--navy-950);
+}
+
+.stripe{
+  width: 72px;
+  height: 4px;
+  margin: 0 auto 24px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--sky-600), var(--sky-400), var(--sky-100));
+  background-size: 200% 100%;
+  animation: stripe-sweep 3.2s ease-in-out infinite;
+}
+
+.tagline{
+  max-width: 480px;
+  margin-inline: auto;
+  color: var(--slate-500);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* Display headings ------------------------------------------------------------ */
+.display{ margin: 0; line-height: 1.25; }
+h1.display, h2.display{ color: var(--navy-950); }
+[data-fa].display, .display[data-fa]{
+  font-weight: 700;
+  font-size: clamp(24px, 4.4vw, 32px);
+}
+[data-en].display, .display[data-en]{
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(22px, 4vw, 30px);
+}
+
+.section-label{
+  color: var(--sky-600);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+section{ padding-block: 46px; }
+
+/* About — glass panel ---------------------------------------------------------- */
+.about-body{
+  background: var(--glass-bg-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass);
+  padding: 26px 26px 22px;
+  margin-top: 18px;
+}
+.about-body p{
+  color: var(--navy-950);
+  font-size: 16px;
+  line-height: 1.9;
+  margin: 14px 0 0;
+}
+.about-body p:first-child{ margin-top: 0; }
+
+/* Projects — glass cards -------------------------------------------------------- */
+.project{
+  margin-top: 28px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.project:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glass-hover);
+}
+
+.win-bar{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 18px;
+  background: rgba(224,242,254,.55);
+  border-bottom: 1px solid var(--glass-border);
+}
+.dot{ width: 9px; height: 9px; border-radius: 50%; background: var(--sky-200); }
+.dot:nth-child(1){ background: #ffb4a8; }
+.dot:nth-child(2){ background: #ffd792; }
+.dot:nth-child(3){ background: #8fe1a8; }
+.path{ margin-inline-start: 8px; color: var(--slate-500); font-size: 12px; }
+
+.shot{
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.project-body{ padding: 24px 24px 26px; }
+.project-body h3{
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: var(--navy-950);
+}
+.project-body h3[data-en]{ font-family: "Fraunces", serif; font-style: italic; font-weight: 600; }
+.project-body p{
+  margin: 0;
+  color: var(--slate-500);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.chip{
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,.6);
+  border: 1px solid var(--glass-border);
+  color: var(--sky-600);
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+/* Buttons ------------------------------------------------------------------------ */
+.project-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  margin-inline-end: 10px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 14px;
+  background: linear-gradient(155deg, var(--sky-500), var(--sky-600));
+  color: var(--white);
+  box-shadow: var(--shadow-btn);
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
+}
+.project-link:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -8px rgba(14,165,233,.6);
+  filter: brightness(1.05);
+}
+.project-link:active{ transform: translateY(0); }
+
+/* Back-to-home links: lighter glass-outline style */
+a.project-link[href="index.html"]{
+  background: rgba(255,255,255,.6);
+  color: var(--sky-600);
+  border: 1px solid var(--glass-border);
+  box-shadow: none;
+}
+a.project-link[href="index.html"]:hover{
+  background: var(--white);
+  box-shadow: var(--shadow-btn);
+}
+
+/* Footer ------------------------------------------------------------------------- */
+footer{
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  color: var(--slate-500);
+  font-size: 13px;
+}
+.more-soon{ color: var(--sky-600); }
+
+/* Motion ------------------------------------------------------------------------- */
+@keyframes frame-in{
+  from{ opacity: 0; transform: scale(.85); }
+  to{ opacity: 1; transform: scale(1); }
+}
+@keyframes stripe-sweep{
+  0%, 100%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+}
+
+/* Responsive ---------------------------------------------------------------------- */
+@media (max-width: 560px){
+  .wrap{ padding-inline: 18px; }
+  header{ top: 10px; padding-inline: 10px; }
+  .header-row{ padding: 10px 16px; }
+  .hero{ padding-block: 48px 32px; }
+  section{ padding-block: 36px; }
+  .about-body{ padding: 20px; }
+  .project-body{ padding: 18px; }
+}
